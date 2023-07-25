@@ -154,6 +154,10 @@ public enum AnalyticsEvent {
         case SuccessScreenUnlimited
         case Search
         case SearchKeyword(keyword: String)
+        case FD_Error_generic
+        case FD_Error_ready_soon
+        case FD_Error_payment_failed
+        case FD_Error_no_internet
     }
 }
 
@@ -421,6 +425,14 @@ extension AnalyticsEvent {
             return "search_screen"
         case .firebaseEvent(.SearchKeyword(let keyword)):
             return "search_\(keyword)"
+        case .firebaseEvent(.FD_Error_generic):
+            return "FD_Error_generic"
+        case .firebaseEvent(.FD_Error_ready_soon):
+            return "FD_Error_ready_soon"
+        case .firebaseEvent(.FD_Error_payment_failed):
+            return "FD_Error_payment_failed"
+        case .firebaseEvent(.FD_Error_no_internet):
+            return "FD_Error_no_internet"
             
         default:
             return String(describing: self)
