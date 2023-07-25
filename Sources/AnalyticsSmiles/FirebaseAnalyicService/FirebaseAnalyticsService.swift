@@ -10,7 +10,7 @@ import Foundation
 import Combine
 import FirebaseAnalytics
 
-public final class FirebaseAnalyticsService: AnalyticService {
+final public class FirebaseAnalyticsService: AnalyticService {
     public func sendAnalyticTracker<TrackerData>(trackerData: TrackerData) -> AnyPublisher<Bool, AnalyticsError> where TrackerData : EventTrackerData {
         guard !trackerData.eventType.isEmpty else {
             // Return a fail publisher if the url is invalid
