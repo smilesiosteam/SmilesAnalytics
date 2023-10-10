@@ -3,13 +3,13 @@ import Combine
 public final class AnalyticsSmiles {
     public private(set) var service : AnalyticService
     
+    var subscriptions = Set<AnyCancellable>()
+    
     public init(service: AnalyticService) {
         self.service = service
     }
     
     public func sendAnalyticTracker<TrackerData: EventTrackerData>(trackerData: TrackerData) {
-        var subscriptions = Set<AnyCancellable>()
-
         service.sendAnalyticTracker(trackerData: trackerData)
             .sink { (completion) in
                 switch completion {
